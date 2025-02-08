@@ -2,7 +2,7 @@
 title: "ESS 330 Actvity 4"
 subtitle: "Meet R, Quarto, & Github"
 author: Jake Matullo
-date: 2/8/2025
+date: last-modified
 format:
   html:
     toc: true
@@ -17,6 +17,8 @@ knitr:
 #| include: false
 knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
+
+
 
 ## Objectives:
 
@@ -46,6 +48,8 @@ In your rendered document, this is a call out!. **Note** both the notation for t
 
 Quarto provides an unified authoring framework for data science, combining code, results, and commentary. Quarto documents are fully reproducible and support dozens of output formats, like PDFs, Word files, slideshows, and more.
 
+
+
 ```{r}
 #| echo: false
 #| out.width: "80%"
@@ -53,6 +57,8 @@ Quarto provides an unified authoring framework for data science, combining code,
 #| fig.caption: "The Quarto Workflow"
 knitr::include_graphics('../img/quartoflow.png')
 ```
+
+
 
 A `.qmd` file contains three important types of content:
 
@@ -139,10 +145,14 @@ And I can refine the image:
 
 Or I can use knitr directly!
 
+
+
 ```{r}
 #| echo: false
 knitr::include_graphics('../img/globe-image.jpg')
 ```
+
+
 
 I can also add document breaks with `*****`:
 
@@ -191,6 +201,8 @@ Quarto supports the creation of markdown tables, look at the qmd file on how to 
 
 Read in our data:
 
+
+
 ```{r}
 #| message: false
 #| warning: false
@@ -203,9 +215,13 @@ library(tidyverse)
 cities <- readr::read_csv('../data/simplemaps_uscities_basicv1.90/uscities.csv')
 ```
 
+
+
 # Exploration
 
 Here we see some basic data exploration tools to see what our data looks like:
+
+
 
 ```{r}
 #| eval: TRUE
@@ -214,9 +230,13 @@ names(cities)
 head(cities)
 ```
 
+
+
 # Some basic Data Exploration
 
 With an understanding of the data, lets answers a few questions:
+
+
 
 ```{r}
 # Which cities are the most dense?
@@ -232,7 +252,11 @@ cities  |>
   head()
 ```
 
+
+
 ## In line code:
+
+
 
 ```{r}
 #| echo: false
@@ -243,9 +267,13 @@ big_cities <-  cities |>
   filter(!state_name %in% c("Alaska", "Hawaii", "Puerto Rico"))
 ```
 
+
+
 We can evaluate R variables and code in-line. For example, there are `r nrow(big_cities)` cities with a population greater then `r formatC(threshold, format="d", big.mark=",")`.
 
 Here is a map!
+
+
 
 ```{r, filename="matplotlib.py"}
 #| echo: false
@@ -264,3 +292,4 @@ big_cities  |>
        y = "") + 
   theme_bw()
 ```
+
